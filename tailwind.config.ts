@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss"
-import defaultConfig from "shadcn/ui/tailwind.config"
+// import defaultConfig from "shadcn/ui/tailwind.config"
+const defaultConfig = {} as Config; // Replace with your base Tailwind config if needed
 
 const config: Config = {
   ...defaultConfig,
@@ -12,7 +13,7 @@ const config: Config = {
   theme: {
     ...defaultConfig.theme,
     extend: {
-      ...defaultConfig.theme.extend,
+      ...(defaultConfig.theme?.extend),
       animation: {
         pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         bounce: "bounce 1s infinite",
@@ -22,7 +23,7 @@ const config: Config = {
         "1000": "1000px",
       },
       colors: {
-        ...defaultConfig.theme.extend.colors,
+        ...defaultConfig.theme?.extend?.colors,
         "neon-cyan": "#00FFFF",
         "neon-pink": "#FF00FF",
         "neon-purple": "#8A2BE2",
@@ -46,7 +47,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [...defaultConfig.plugins, require("tailwindcss-animate")],
+  plugins: [...(defaultConfig.plugins ?? []), require("tailwindcss-animate")],
 }
 
 export default config
