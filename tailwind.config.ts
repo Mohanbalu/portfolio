@@ -1,7 +1,5 @@
 import type { Config } from "tailwindcss"
-// import defaultConfig from "shadcn/ui/tailwind.config"
-const defaultConfig = {} as Config; // Replace with your base Tailwind config if needed
-
+const defaultConfig = {} as Config;
 const config: Config = {
   ...defaultConfig,
   content: [
@@ -49,5 +47,15 @@ const config: Config = {
   },
   plugins: [...(defaultConfig.plugins ?? []), require("tailwindcss-animate")],
 }
-
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        border: 'hsl(240, 4%, 80%)',       // customize as needed
+        background: 'hsl(0, 0%, 100%)',
+        foreground: 'hsl(0, 0%, 10%)',
+      },
+    },
+  },
+};
 export default config
